@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://da37ea6a1a3ed"]
+
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_3p8aj"]
+[ext_resource type="Texture2D" uid="uid://cgara4urm2snr" path="res://Sprites/Fisher.png" id="1_foqhf"]
+[ext_resource type="PackedScene" uid="uid://bio6fkdif6p4y" path="res://Scenes/bait.tscn" id="3_1qe63"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_3p8aj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="FishMan" type="Sprite2D" parent="."]
+position = Vector2(-173.545, 16.25)
+scale = Vector2(0.15906, 0.15906)
+texture = ExtResource("1_foqhf")
+
+[node name="Bait" parent="." instance=ExtResource("3_1qe63")]
+unique_name_in_owner = true
+position = Vector2(-316, 52)

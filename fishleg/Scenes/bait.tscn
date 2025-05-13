@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bio6fkdif6p4y"]
+
+[ext_resource type="Texture2D" uid="uid://io76w87fihad" path="res://Sprites/Bait.png" id="1_iur8d"]
+[ext_resource type="Script" path="res://Scripts/bait.gd" id="1_xd0jl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycu47"]
+radius = 20.3961
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhfup"]
+radius = 28.0179
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wh66f"]
+radius = 112.018
+
+[node name="Bait" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_xd0jl")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ycu47")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-6.10352e-05, 7.62939e-06)
+scale = Vector2(0.111745, 0.111745)
+texture = ExtResource("1_iur8d")
+region_enabled = true
+region_rect = Rect2(238.134, 220.522, 384.346, 327.755)
+
+[node name="Catch_Radius" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="Radius" type="CollisionShape2D" parent="Catch_Radius"]
+shape = SubResource("CircleShape2D_uhfup")
+debug_color = Color(1.73271e-06, 0.939375, 0.570814, 0.42)
+
+[node name="Aggro_radius" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Radius" type="CollisionShape2D" parent="Aggro_radius"]
+shape = SubResource("CircleShape2D_wh66f")
+debug_color = Color(0.747867, 0.433979, 0.427478, 0.42)
+
+[connection signal="area_shape_entered" from="Catch_Radius" to="." method="_on_catch_radius_area_shape_entered"]
+[connection signal="area_shape_entered" from="Aggro_radius" to="." method="_on_aggro_radius_area_shape_entered"]
+[connection signal="area_shape_exited" from="Aggro_radius" to="." method="_on_aggro_radius_area_shape_exited"]

@@ -1,0 +1,456 @@
+[gd_scene load_steps=22 format=3 uid="uid://jltowmmkfiqo"]
+
+[ext_resource type="Texture2D" uid="uid://cdpm3hby7fpht" path="res://Sprites/Inventory.png" id="1_m6ytk"]
+[ext_resource type="Texture2D" uid="uid://ds84lkn2t2lop" path="res://Sprites/betterShine.png" id="1_pg1vb"]
+[ext_resource type="Script" path="res://Scripts/inventory.gd" id="2_au1na"]
+[ext_resource type="Texture2D" uid="uid://cpeplx12wjed6" path="res://Sprites/InventorySlot.png" id="2_nkmgs"]
+[ext_resource type="Script" path="res://Scripts/button.gd" id="4_knqkl"]
+[ext_resource type="Texture2D" uid="uid://cs4idhy5sa4ub" path="res://Sprites/Inventory_closed.png" id="4_lkn4p"]
+[ext_resource type="Texture2D" uid="uid://blro0myo5rgx5" path="res://Sprites/Inventory_open.png" id="7_p5rli"]
+[ext_resource type="Texture2D" uid="uid://ch4yvq2blvi7d" path="res://Sprites/Shop_Icon.png" id="8_0vjrp"]
+[ext_resource type="Texture2D" uid="uid://b4w54mcecld3i" path="res://Sprites/Bait_speed.png" id="9_25cud"]
+[ext_resource type="Script" path="res://Scripts/shop.gd" id="9_aejd5"]
+[ext_resource type="Script" path="res://Scripts/Shop_Slot.gd" id="10_eb5ao"]
+[ext_resource type="Texture2D" uid="uid://b4kray7qx553l" path="res://Sprites/Button.png" id="10_g7i8k"]
+
+[sub_resource type="Animation" id="Animation_s4qb5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.653264, 0.653264)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(902, 231)]
+}
+
+[sub_resource type="Animation" id="Animation_hjwco"]
+resource_name = "pop_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.31864, 0.31864),
+"update": 0,
+"values": [Vector2(0.094347, 0.094347), Vector2(0.653, 0.653)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.31864, 0.31864),
+"update": 0,
+"values": [Vector2(1089, 56), Vector2(902, 231)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07kgh"]
+_data = {
+"RESET": SubResource("Animation_s4qb5"),
+"pop_up": SubResource("Animation_hjwco")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j022c"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_2g5nk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.513298, 0.513298)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.780392, 0.921569, 0.788235, 0.792157)]
+}
+
+[sub_resource type="Animation" id="Animation_uxqhs"]
+resource_name = "shine_go_away"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(0.353554, 0.353554),
+"update": 0,
+"values": [Vector2(0.582803, 0.582803), Vector2(0.0445861, 0.0445861)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.780392, 0.921569, 0.788235, 0.792157), Color(0.780392, 0.921569, 0.788235, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_31d3v"]
+resource_name = "shine_pop_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(0.353554, 0.353554),
+"update": 0,
+"values": [Vector2(0.0445861, 0.0445861), Vector2(0.582803, 0.582803)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.780392, 0.921569, 0.788235, 0), Color(0.780392, 0.921569, 0.788235, 0.792157)]
+}
+
+[sub_resource type="Animation" id="Animation_bruxi"]
+resource_name = "shine_rotation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pfx1"]
+_data = {
+"RESET": SubResource("Animation_2g5nk"),
+"shine_go_away": SubResource("Animation_uxqhs"),
+"shine_pop_up": SubResource("Animation_31d3v"),
+"shine_rotation": SubResource("Animation_bruxi")
+}
+
+[node name="Gui" type="CanvasLayer"]
+
+[node name="Inventory" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(902, 231)
+scale = Vector2(0.653264, 0.653264)
+texture = ExtResource("1_m6ytk")
+script = ExtResource("2_au1na")
+
+[node name="Slot" type="Sprite2D" parent="Inventory"]
+visible = false
+position = Vector2(-159.48, -163.118)
+scale = Vector2(0.191876, 0.191876)
+texture = ExtResource("2_nkmgs")
+
+[node name="Name" type="Label" parent="Inventory/Slot"]
+offset_left = -491.851
+offset_top = 166.998
+offset_right = 502.149
+offset_bottom = 443.998
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.678431)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 140
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Rarity" type="Label" parent="Inventory/Slot"]
+offset_left = -414.027
+offset_top = 348.589
+offset_right = 432.973
+offset_bottom = 538.589
+theme_override_colors/font_color = Color(0.999999, 0.560995, 0.916371, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.552941)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 120
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Inventory"]
+libraries = {
+"": SubResource("AnimationLibrary_07kgh")
+}
+
+[node name="Shine" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.780392, 0.921569, 0.788235, 0.792157)
+self_modulate = Color(1, 1, 1, 0.65098)
+material = SubResource("CanvasItemMaterial_j022c")
+position = Vector2(563, 273)
+scale = Vector2(0.513298, 0.513298)
+texture = ExtResource("1_pg1vb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shine"]
+libraries = {
+"": SubResource("AnimationLibrary_6pfx1")
+}
+
+[node name="Name" type="Label" parent="Shine"]
+offset_left = -222.093
+offset_top = 68.1865
+offset_right = 228.907
+offset_bottom = 187.186
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.678431)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 40
+text = "Fishy Fishy wow wow"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Rarity" type="Label" parent="Shine"]
+offset_left = -222.093
+offset_top = 120.787
+offset_right = 228.907
+offset_bottom = 239.787
+theme_override_colors/font_color = Color(0.999999, 0.560995, 0.916371, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.552941)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "super duper rare!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Inventory_Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1038.0
+offset_top = 10.0
+offset_right = 1136.0
+offset_bottom = 101.0
+script = ExtResource("4_knqkl")
+
+[node name="Closed" type="Sprite2D" parent="Inventory_Button"]
+position = Vector2(49, 45)
+scale = Vector2(0.144904, 0.144904)
+texture = ExtResource("4_lkn4p")
+
+[node name="Open" type="Sprite2D" parent="Inventory_Button"]
+visible = false
+position = Vector2(49, 45)
+scale = Vector2(0.144904, 0.144904)
+texture = ExtResource("7_p5rli")
+
+[node name="Shop_Button" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(590, 69)
+scale = Vector2(0.205742, 0.205742)
+texture = ExtResource("8_0vjrp")
+
+[node name="Shop" type="Sprite2D" parent="." node_paths=PackedStringArray("slot_base")]
+script = ExtResource("9_aejd5")
+slot_base = NodePath("Slot")
+
+[node name="Slot" type="Sprite2D" parent="Shop"]
+visible = false
+position = Vector2(83, 222)
+scale = Vector2(0.191126, 0.25)
+texture = ExtResource("2_nkmgs")
+script = ExtResource("10_eb5ao")
+name_text = "Bait"
+description = "Hello"
+
+[node name="Image" type="Sprite2D" parent="Shop/Slot"]
+position = Vector2(6.22658, -123.01)
+scale = Vector2(0.417487, 0.313058)
+texture = ExtResource("9_25cud")
+
+[node name="Name" type="Label" parent="Shop/Slot"]
+offset_left = -299.0
+offset_top = -25.0
+offset_right = 297.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(1, 0.693865, 0.760518, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.678431)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 80
+text = "Bait Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="Shop/Slot"]
+offset_left = -305.47
+offset_top = 90.6392
+offset_right = 290.53
+offset_bottom = 238.639
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.678431)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "Increased max bait Speed by +5"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buy_Button" type="Button" parent="Shop/Slot"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -210.0
+offset_top = 262.0
+offset_right = 222.0
+offset_bottom = 366.0
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "Cost: 50
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="Shop/Slot/Buy_Button"]
+self_modulate = Color(0.153, 0.85, 0.234317, 1)
+position = Vector2(211.994, 48.7632)
+scale = Vector2(0.496465, 0.294842)
+texture = ExtResource("10_g7i8k")
+
+[node name="Description2" type="Label" parent="Shop/Slot/Buy_Button"]
+self_modulate = Color(0.7885, 1, 0.73, 1)
+layout_mode = 0
+offset_left = 42.6234
+offset_top = 16.392
+offset_right = 351.623
+offset_bottom = 85.392
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.678431)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "Buy: 50$
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

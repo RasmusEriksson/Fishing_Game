@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c17boqgdjtrwo"]
+
+[ext_resource type="Script" path="res://Scripts/fish_storage.gd" id="1_va030"]
+[ext_resource type="Texture2D" uid="uid://drs4n2kvd5aj" path="res://Sprites/fush.png" id="1_vedpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axwt8"]
+size = Vector2(495, 159)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_scbnc"]
+radius = 160.2
+
+[node name="fish_storage" type="Node"]
+script = ExtResource("1_va030")
+
+[node name="Fush" type="CharacterBody2D" parent="."]
+z_index = 4
+position = Vector2(4, -1)
+scale = Vector2(0.18, 0.18)
+collision_mask = 4
+
+[node name="Sprite" type="Sprite2D" parent="Fush"]
+position = Vector2(302.5, -28)
+texture = ExtResource("1_vedpb")
+
+[node name="Collision" type="CollisionShape2D" parent="Fush"]
+position = Vector2(266.5, -4.5)
+shape = SubResource("RectangleShape2D_axwt8")
+debug_color = Color(0, 0.6, 0.701961, 0.337255)
+
+[node name="Area_Detection" type="Area2D" parent="Fush"]
+position = Vector2(302.5, -28)
+collision_layer = 10
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fush/Area_Detection"]
+position = Vector2(-304, 24)
+shape = SubResource("CircleShape2D_scbnc")
+debug_color = Color(0.944113, 5.48691e-06, 0.598559, 0.42)

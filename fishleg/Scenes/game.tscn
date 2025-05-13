@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://da37ea6a1a3ed"]
+
+[ext_resource type="Texture2D" uid="uid://cgara4urm2snr" path="res://Sprites/Fisher.png" id="1_foqhf"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_pb56s"]
+[ext_resource type="PackedScene" uid="uid://dtw42xdll4yes" path="res://Scenes/fish_manager.tscn" id="2_q8vb1"]
+[ext_resource type="PackedScene" uid="uid://bio6fkdif6p4y" path="res://Scenes/bait.tscn" id="3_1qe63"]
+[ext_resource type="PackedScene" uid="uid://jltowmmkfiqo" path="res://Scenes/Gui.tscn" id="5_xtg10"]
+[ext_resource type="Texture2D" uid="uid://bo56kgr8sws3u" path="res://Sprites/Shop_keeper1.png" id="6_fd2d1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akct5"]
+size = Vector2(834, 416)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p5wwi"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Game_Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_pb56s")
+
+[node name="Fish_Manager" parent="." instance=ExtResource("2_q8vb1")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="FishMan" type="Sprite2D" parent="."]
+position = Vector2(-193, 16)
+scale = Vector2(0.15906, 0.15906)
+texture = ExtResource("1_foqhf")
+
+[node name="Bait" parent="." instance=ExtResource("3_1qe63")]
+unique_name_in_owner = true
+position = Vector2(-316, 52)
+
+[node name="Zones" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Place_Holder_Area" type="Area2D" parent="Zones"]
+position = Vector2(0, 563)
+
+[node name="Bound_Box" type="CollisionShape2D" parent="Zones/Place_Holder_Area"]
+shape = SubResource("RectangleShape2D_akct5")
+
+[node name="Map" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(575, 327)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_p5wwi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(-577, 327)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_p5wwi")
+
+[node name="Gui" parent="." instance=ExtResource("5_xtg10")]
+unique_name_in_owner = true
+
+[node name="ShopKeeper1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(89, 7)
+scale = Vector2(0.182877, 0.182877)
+texture = ExtResource("6_fd2d1")
