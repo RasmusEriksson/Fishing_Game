@@ -4,3 +4,4 @@ Det viktiga som du kan kolla på är nog scripten för fish_manager och fish_sto
 För att hitta dem så kan du gå i foldersarna > Fishleg > Scripts > fish_manager/fish_storage
 
 Det är typ det :D
+Jag kommer att ha laddat upp spelet också i classroom tillsammans med länken till detta repo om du vill speltesta
